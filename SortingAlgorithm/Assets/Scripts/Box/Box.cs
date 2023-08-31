@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-
-
+using UnityEngine.UIElements;
 
 public class Box : MonoBehaviour
 {
 	private int InternalLength = 1;
-	
+
+	public int Index = -1;
+
+	public Renderer RenderComp;
+
 
 
 	public int Length
@@ -22,10 +26,28 @@ public class Box : MonoBehaviour
 
 
 
-	public void Swap(Box Target)
+	public static void Swap(Box A, Box B)
 	{
-		Vector3 OldPos = transform.position;
-		transform.position = Target.transform.position;
-		Target.transform.position = OldPos;
+		(B.transform.position, A.transform.position) = (A.transform.position, B.transform.position);
+
+		BoxManager.Instance.ColorBoxRed(A);
+		BoxManager.Instance.ColorBoxRed(B);
+
+		(BoxManager.Instance.Boxes[B.Index], BoxManager.Instance.Boxes[A.Index]) = (BoxManager.Instance.Boxes[A.Index], BoxManager.Instance.Boxes[B.Index]);
+		(B.Index, A.Index) = (A.Index, B.Index);
+	}
+
+
+
+	public static bool operator >(Box a, Box b)
+	{
+		return a.InternalLength > b.InternalLength;
+	}
+
+
+
+	public static bool operator <(Box a, Box b)
+	{
+		return a.InternalLength < b.InternalLength;
 	}
 }

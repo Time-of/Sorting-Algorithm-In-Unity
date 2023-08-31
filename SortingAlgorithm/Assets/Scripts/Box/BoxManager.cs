@@ -7,18 +7,38 @@ using UnityEngine;
 
 public class BoxManager : MonoBehaviour
 {
+	private static BoxManager _Instance;
+
 	[HideInInspector]
-	public List<Box> Boxes;
+	public Box[] Boxes;
 
 	public int BoxCount = 0;
 
 	[SerializeField]
 	private Box BoxPrefab = null;
 
+	[SerializeField]
+	private Material BoxOriginalColor;
+
+	[SerializeField]
+	private Material BoxGreenColor;
+	
+	[SerializeField]
+	private Material BoxRedColor;
+
+
+
+	public static BoxManager Instance
+	{
+		get { return _Instance; }
+		private set { _Instance = value; }
+	}
+
 
 
 	private void Awake()
 	{
+		Instance = this;
 		MakeBoxes();
 	}
 
@@ -36,12 +56,15 @@ public class BoxManager : MonoBehaviour
 
 	private void MakeBoxes()
 	{
+		Boxes = new Box[BoxCount];
+
 		for (int i = 0; i < BoxCount; ++i)
 		{
 			Box BoxInst = Instantiate(BoxPrefab, new Vector3(i, 0, 0), Quaternion.identity);
 			BoxInst.Length = i + 1;
+			BoxInst.Index = i;
 
-			Boxes.Add(BoxInst);
+			Boxes[i] = BoxInst;
 		}
 	}
 
@@ -52,7 +75,33 @@ public class BoxManager : MonoBehaviour
 		for (int i = BoxCount - 1; i > 0; --i)
 		{
 			int k = Random.Range(0, i);
-			Boxes[i].Swap(Boxes[k]);
+			Box.Swap(Boxes[i], Boxes[k]);
 		}
+
+		foreach (Box box in Boxes)
+		{
+			ColorBoxWhite(box);
+		}
+	}
+
+
+
+	public void ColorBoxWhite(Box Target)
+	{
+		Target.RenderComp.material = BoxOriginalColor;
+	}
+
+
+
+	public void ColorBoxGreen(Box Target)
+	{
+		Target.RenderComp.material = BoxGreenColor;
+	}
+
+
+
+	public void ColorBoxRed(Box Target)
+	{
+		Target.RenderComp.material = BoxRedColor;
 	}
 }
