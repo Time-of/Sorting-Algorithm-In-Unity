@@ -4,20 +4,14 @@ using UnityEngine;
 
 
 
+/// <summary>
+/// 버블 정렬
+/// 각 원소와 원소의 오른쪽 원소 값을 비교하여, 원소가 더 크다면 스왑
+/// </summary>
 public class BubbleSort : SortAlgorithmBase
 {
-	public override void Sort()
+	protected override IEnumerator SortCoroutine()
 	{
-		StartCoroutine(SortCoroutine());
-	}
-
-
-
-	private IEnumerator SortCoroutine()
-	{
-		Box[] Boxes = BoxManager.Instance.Boxes;
-		int Length = BoxManager.Instance.BoxCount;
-
 		for (int i = 0; i < Length; ++i)
 		{
 			// 우측으로부터 i번째까지의 원소는 이미 정렬된 상태이므로, 정렬하지 않습니다.

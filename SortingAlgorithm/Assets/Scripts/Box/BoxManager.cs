@@ -26,6 +26,9 @@ public class BoxManager : MonoBehaviour
 	[SerializeField]
 	private Material BoxRedColor;
 
+	[SerializeField]
+	private Material BoxBlueColor;
+
 
 
 	public static BoxManager Instance
@@ -103,5 +106,12 @@ public class BoxManager : MonoBehaviour
 	public void ColorBoxRed(Box Target)
 	{
 		Target.RenderComp.material = BoxRedColor;
+	}
+
+
+
+	public void ColorBoxBlue(Box Target)
+	{
+		Target.RenderComp.material = BoxBlueColor;
 	}
 }
