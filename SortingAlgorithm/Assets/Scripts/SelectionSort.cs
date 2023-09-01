@@ -25,6 +25,8 @@ public class SelectionSort : SortAlgorithmBase
 				// 최솟값을 탐색
 				if (Boxes[j] < Boxes[MinIndex])
 				{
+					Boxes[MinIndex].ColorWhite();
+
 					MinIndex = j;
 
 					Boxes[MinIndex].ColorBlue();
@@ -32,7 +34,8 @@ public class SelectionSort : SortAlgorithmBase
 
 				yield return RepeatWaitTime;
 
-				Boxes[j].ColorWhite();
+				if (j != MinIndex)
+					Boxes[j].ColorWhite();
 			}
 
 			// 최솟값을 앞에서부터 차례대로 세워나가며 정렬한다.
