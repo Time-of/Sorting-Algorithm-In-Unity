@@ -68,6 +68,27 @@ public class Box : MonoBehaviour
 
 
 
+	public static IEnumerator SwapByIndexCoroutine(int AIndex, int BIndex)
+	{
+		Box A = BoxManager.Instance.Boxes[AIndex];
+		Box B = BoxManager.Instance.Boxes[BIndex];
+
+		Vector3 OldAPos = A.transform.position;
+		A.transform.DOMove(B.transform.position, 0.18f);
+		B.transform.DOMove(OldAPos, 0.18f);
+
+		Swap(A, B, true);
+
+		yield return SortAlgorithmBase.SwapWaitTime;
+
+		A.ColorWhite();
+		B.ColorWhite();
+
+		yield return null;
+	}
+
+
+
 	public static bool operator >(Box a, Box b)
 	{
 		return a.InternalLength > b.InternalLength;
@@ -78,6 +99,20 @@ public class Box : MonoBehaviour
 	public static bool operator <(Box a, Box b)
 	{
 		return a.InternalLength < b.InternalLength;
+	}
+
+
+
+	public static bool operator >=(Box a, Box b)
+	{
+		return a.InternalLength >= b.InternalLength;
+	}
+
+
+
+	public static bool operator <=(Box a, Box b)
+	{
+		return a.InternalLength <= b.InternalLength;
 	}
 
 
