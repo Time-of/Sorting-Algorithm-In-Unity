@@ -20,7 +20,7 @@ public class InsertionSort : SortAlgorithmBase
 
 			int j = i - 1;
 
-			BoxManager.Instance.ColorBoxGreen(Boxes[i]);
+			Boxes[i].ColorGreen();
 
 			// j번 인덱스의 값이 Key보다 커질 커질 때까지
 			while (j >= 0 && Boxes[j].Length > Key)
@@ -33,7 +33,7 @@ public class InsertionSort : SortAlgorithmBase
 
 			yield return RepeatWaitTime;
 			
-			BoxManager.Instance.ColorBoxWhite(Boxes[i]);
+			Boxes[i].ColorWhite();
 		}
 	}
 }

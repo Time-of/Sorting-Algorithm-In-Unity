@@ -17,8 +17,8 @@ public class BubbleSort : SortAlgorithmBase
 			// 우측으로부터 i번째까지의 원소는 이미 정렬된 상태이므로, 정렬하지 않습니다.
 			for (int j = 0; j < Length - 1 - i; ++j)
 			{
-				BoxManager.Instance.ColorBoxGreen(Boxes[j]);
-				BoxManager.Instance.ColorBoxGreen(Boxes[j + 1]);
+				Boxes[j].ColorGreen();
+				Boxes[j + 1].ColorGreen();
 
 				if (Boxes[j] > Boxes[j + 1])
 				{
@@ -28,8 +28,8 @@ public class BubbleSort : SortAlgorithmBase
 				{
 					yield return RepeatWaitTime;
 
-					BoxManager.Instance.ColorBoxWhite(Boxes[j]);
-					BoxManager.Instance.ColorBoxWhite(Boxes[j + 1]);
+					Boxes[j].ColorWhite();
+					Boxes[j + 1].ColorWhite();
 				}
 			}
 		}

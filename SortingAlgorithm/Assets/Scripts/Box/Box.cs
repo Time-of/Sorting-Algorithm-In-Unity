@@ -29,15 +29,22 @@ public class Box : MonoBehaviour
 
 	public static void Swap(Box A, Box B, bool bDoNotChangePosition = false)
 	{
+		Swap(A, B, BoxManager.Instance.Boxes, bDoNotChangePosition);
+	}
+
+
+
+	public static void Swap(Box A, Box B, Box[] BoxArray, bool bDoNotChangePosition = false)
+	{
 		if (!bDoNotChangePosition)
 		{
 			(B.transform.position, A.transform.position) = (A.transform.position, B.transform.position);
 		}
 
-		BoxManager.Instance.ColorBoxRed(A);
-		BoxManager.Instance.ColorBoxRed(B);
+		A.ColorRed();
+		B.ColorRed();
 
-		(BoxManager.Instance.Boxes[B.Index], BoxManager.Instance.Boxes[A.Index]) = (BoxManager.Instance.Boxes[A.Index], BoxManager.Instance.Boxes[B.Index]);
+		(BoxArray[B.Index], BoxArray[A.Index]) = (BoxArray[A.Index], BoxArray[B.Index]);
 		(B.Index, A.Index) = (A.Index, B.Index);
 	}
 
@@ -53,8 +60,8 @@ public class Box : MonoBehaviour
 
 		yield return SortAlgorithmBase.SwapWaitTime;
 
-		BoxManager.Instance.ColorBoxWhite(A);
-		BoxManager.Instance.ColorBoxWhite(B);
+		A.ColorWhite();
+		B.ColorWhite();
 
 		yield return null;
 	}
@@ -71,5 +78,33 @@ public class Box : MonoBehaviour
 	public static bool operator <(Box a, Box b)
 	{
 		return a.InternalLength < b.InternalLength;
+	}
+
+
+
+	public void ColorWhite()
+	{
+		RenderComp.material = BoxManager.Instance.BoxOriginalColor;
+	}
+
+
+
+	public void ColorGreen()
+	{
+		RenderComp.material = BoxManager.Instance.BoxGreenColor;
+	}
+
+
+
+	public void ColorRed()
+	{
+		RenderComp.material = BoxManager.Instance.BoxRedColor;
+	}
+
+
+
+	public void ColorBlue()
+	{
+		RenderComp.material = BoxManager.Instance.BoxBlueColor;
 	}
 }

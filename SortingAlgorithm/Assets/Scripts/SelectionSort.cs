@@ -20,19 +20,19 @@ public class SelectionSort : SortAlgorithmBase
 			// i 바로 다음부터 오른쪽 끝까지 검사
 			for (int j = i + 1; j < Length; ++j)
 			{
-				BoxManager.Instance.ColorBoxGreen(Boxes[j]);
+				Boxes[j].ColorGreen();
 
 				// 최솟값을 탐색
 				if (Boxes[j] < Boxes[MinIndex])
 				{
 					MinIndex = j;
 
-					BoxManager.Instance.ColorBoxBlue(Boxes[MinIndex]);
+					Boxes[MinIndex].ColorBlue();
 				}
 
 				yield return RepeatWaitTime;
 
-				BoxManager.Instance.ColorBoxWhite(Boxes[j]);
+				Boxes[j].ColorWhite();
 			}
 
 			// 최솟값을 앞에서부터 차례대로 세워나가며 정렬한다.
@@ -44,7 +44,7 @@ public class SelectionSort : SortAlgorithmBase
 			{
 				yield return RepeatWaitTime;
 				
-				BoxManager.Instance.ColorBoxWhite(Boxes[i]);
+				Boxes[i].ColorWhite();
 			}
 		}
 	}

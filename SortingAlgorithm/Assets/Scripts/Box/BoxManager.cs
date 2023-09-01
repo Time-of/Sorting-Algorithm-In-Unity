@@ -18,17 +18,13 @@ public class BoxManager : MonoBehaviour
 	[SerializeField]
 	private Box BoxPrefab = null;
 
-	[SerializeField]
-	private Material BoxOriginalColor;
+	public Material BoxOriginalColor;
 
-	[SerializeField]
-	private Material BoxGreenColor;
-	
-	[SerializeField]
-	private Material BoxRedColor;
+	public Material BoxGreenColor;
 
-	[SerializeField]
-	private Material BoxBlueColor;
+	public Material BoxRedColor;
+
+	public Material BoxBlueColor;
 
 
 
@@ -86,35 +82,7 @@ public class BoxManager : MonoBehaviour
 
 		foreach (Box box in Boxes)
 		{
-			ColorBoxWhite(box);
+			box.ColorWhite();
 		}
-	}
-
-
-
-	public void ColorBoxWhite(Box Target)
-	{
-		Target.RenderComp.material = BoxOriginalColor;
-	}
-
-
-
-	public void ColorBoxGreen(Box Target)
-	{
-		Target.RenderComp.material = BoxGreenColor;
-	}
-
-
-
-	public void ColorBoxRed(Box Target)
-	{
-		Target.RenderComp.material = BoxRedColor;
-	}
-
-
-
-	public void ColorBoxBlue(Box Target)
-	{
-		Target.RenderComp.material = BoxBlueColor;
 	}
 }

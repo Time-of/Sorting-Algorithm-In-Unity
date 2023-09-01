@@ -31,8 +31,8 @@ public class QuickSort : SortAlgorithmBase
 
 		for (int k = Low; k < High; ++k)
 		{
-			BoxManager.Instance.ColorBoxGreen(Boxes[k]);
-			BoxManager.Instance.ColorBoxGreen(Pivot);
+			Boxes[k].ColorGreen();
+			Pivot.ColorGreen();
 
 			// 피벗보다 작은 값이라면
 			if (Boxes[k] < Pivot)
@@ -45,8 +45,8 @@ public class QuickSort : SortAlgorithmBase
 				yield return RepeatWaitTime;
 			}
 
-			BoxManager.Instance.ColorBoxWhite(Boxes[k]);
-			BoxManager.Instance.ColorBoxWhite(Pivot);
+			Boxes[k].ColorWhite();
+			Pivot.ColorWhite();
 		}
 
 		// 마지막으로 피벗과 인덱스를 스왑하면 분할 완료
