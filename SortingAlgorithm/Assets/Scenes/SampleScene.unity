@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6aed1251a2ce74fb317bb27805d236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortPrefab: {fileID: 561567235947752874, guid: b693d614bc0b5494a8ffebbd40387a99, type: 3}
+  SortPrefab: {fileID: 9152473315546724826, guid: b019608e4975b374fb3de76e8a7f98e6, type: 3}
 --- !u!4 &658663049
 Transform:
   m_ObjectHideFlags: 0
@@ -389,6 +389,7 @@ MonoBehaviour:
   BoxOriginalColor: {fileID: 2100000, guid: 03ae80adedef3fa458e716ef719fcc39, type: 2}
   BoxGreenColor: {fileID: 2100000, guid: 38084084b3ac6b44fa567b1ee839c94f, type: 2}
   BoxRedColor: {fileID: 2100000, guid: 3f3f2b7883d72f845bee5595aca27102, type: 2}
+  BoxBlueColor: {fileID: 2100000, guid: 56e130cf24c52c041bb543629adc4733, type: 2}
 --- !u!4 &1645569471
 Transform:
   m_ObjectHideFlags: 0
