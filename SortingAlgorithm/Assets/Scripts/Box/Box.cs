@@ -27,15 +27,9 @@ public class Box : MonoBehaviour
 
 
 
-	public static void Swap(Box A, Box B, bool bUseTweening = false)
+	public static void Swap(Box A, Box B, bool bDoNotChangePosition = false)
 	{
-		if (bUseTweening)
-		{
-			Vector3 OldAPos = A.transform.position;
-			A.transform.DOMove(B.transform.position, 0.18f);
-			B.transform.DOMove(OldAPos, 0.18f);
-		}
-		else
+		if (!bDoNotChangePosition)
 		{
 			(B.transform.position, A.transform.position) = (A.transform.position, B.transform.position);
 		}
@@ -45,6 +39,24 @@ public class Box : MonoBehaviour
 
 		(BoxManager.Instance.Boxes[B.Index], BoxManager.Instance.Boxes[A.Index]) = (BoxManager.Instance.Boxes[A.Index], BoxManager.Instance.Boxes[B.Index]);
 		(B.Index, A.Index) = (A.Index, B.Index);
+	}
+
+
+
+	public static IEnumerator SwapCoroutine(Box A, Box B)
+	{
+		Vector3 OldAPos = A.transform.position;
+		A.transform.DOMove(B.transform.position, 0.18f);
+		B.transform.DOMove(OldAPos, 0.18f);
+
+		Swap(A, B, true);
+
+		yield return SortAlgorithmBase.SwapWaitTime;
+
+		BoxManager.Instance.ColorBoxWhite(A);
+		BoxManager.Instance.ColorBoxWhite(B);
+
+		yield return null;
 	}
 
 

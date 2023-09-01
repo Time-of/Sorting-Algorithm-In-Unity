@@ -38,16 +38,14 @@ public class SelectionSort : SortAlgorithmBase
 			// 최솟값을 앞에서부터 차례대로 세워나가며 정렬한다.
 			if (i != MinIndex)
 			{
-				Box.Swap(Boxes[i], Boxes[MinIndex], true);
-				
-				yield return SwapWaitTime;
+				yield return Box.SwapCoroutine(Boxes[i], Boxes[MinIndex]);
 			}
 			else
 			{
 				yield return RepeatWaitTime;
+				
+				BoxManager.Instance.ColorBoxWhite(Boxes[i]);
 			}
-
-			BoxManager.Instance.ColorBoxWhite(Boxes[i]);
 		}
 	}
 }

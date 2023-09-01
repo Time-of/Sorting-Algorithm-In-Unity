@@ -22,17 +22,15 @@ public class BubbleSort : SortAlgorithmBase
 
 				if (Boxes[j] > Boxes[j + 1])
 				{
-					Box.Swap(Boxes[j], Boxes[j + 1], true);
-
-					yield return SwapWaitTime;
+					yield return Box.SwapCoroutine(Boxes[j], Boxes[j + 1]);
 				}
 				else
 				{
 					yield return RepeatWaitTime;
-				}
 
-				BoxManager.Instance.ColorBoxWhite(Boxes[j]);
-				BoxManager.Instance.ColorBoxWhite(Boxes[j + 1]);
+					BoxManager.Instance.ColorBoxWhite(Boxes[j]);
+					BoxManager.Instance.ColorBoxWhite(Boxes[j + 1]);
+				}
 			}
 		}
 	}
