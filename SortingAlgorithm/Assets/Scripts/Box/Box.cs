@@ -117,6 +117,20 @@ public class Box : MonoBehaviour
 
 
 
+	public static bool operator !=(Box a, Box b)
+	{
+		return a.InternalLength != b.InternalLength;
+	}
+
+
+
+	public static bool operator ==(Box a, Box b)
+	{
+		return a.InternalLength == b.InternalLength;
+	}
+
+
+
 	public void ColorWhite()
 	{
 		RenderComp.material = BoxManager.Instance.BoxOriginalColor;

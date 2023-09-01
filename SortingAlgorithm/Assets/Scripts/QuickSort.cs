@@ -32,7 +32,7 @@ public class QuickSort : SortAlgorithmBase
 		for (int k = Low; k < High; ++k)
 		{
 			Boxes[k].ColorGreen();
-			Pivot.ColorGreen();
+			Pivot.ColorBlue();
 
 			// 피벗보다 작은 값이라면
 			if (Boxes[k] < Pivot)
@@ -50,7 +50,14 @@ public class QuickSort : SortAlgorithmBase
 		}
 
 		// 마지막으로 피벗과 인덱스를 스왑하면 분할 완료
-		yield return Box.SwapCoroutine(Boxes[++i], Pivot);
+		if (Boxes[i + 1] != Pivot)
+		{
+			yield return Box.SwapCoroutine(Boxes[++i], Pivot);
+		}
+		else
+		{
+			++i;
+		}
 
 		Mid = i;
 
