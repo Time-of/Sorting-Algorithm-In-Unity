@@ -12,10 +12,10 @@ public class BubbleSort : SortAlgorithmBase
 {
 	protected override IEnumerator SortCoroutine()
 	{
-		for (int i = 0; i < Length; ++i)
+		for (int i = 0; i < BoxCount; ++i)
 		{
 			// 우측으로부터 i번째까지의 원소는 이미 정렬된 상태이므로, 정렬하지 않습니다.
-			for (int j = 0; j < Length - 1 - i; ++j)
+			for (int j = 0; j < BoxCount - 1 - i; ++j)
 			{
 				Boxes[j].ColorGreen();
 				Boxes[j + 1].ColorGreen();

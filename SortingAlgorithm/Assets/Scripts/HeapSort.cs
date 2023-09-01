@@ -70,15 +70,15 @@ public class HeapSort : SortAlgorithmBase
 		// 절반의 인덱스부터 진행하는 이유?
 		// 힙 자료구조의 특성 상, 앞쪽 절반의 인덱스는 자식이 존재, 뒤쪽 절반은 자식이 없음.
 		// 즉, 자식이 없는 노드에는 '힙 규칙에 따라 재귀적으로 내려보내기' 작업을 수행할 필요가 없습니다.
-		for (int i = Length / 2 - 1; i >= 0; --i)
+		for (int i = BoxCount / 2 - 1; i >= 0; --i)
 		{
-			yield return MaxHeapify(Length, i);
+			yield return MaxHeapify(BoxCount, i);
 		}
 
 		// 최대 힙은 루트 노드가 가장 큰 값입니다.
 		// 루트 노드를 뒤로 보내고, 남은 힙을 다시 최대 힙 구조로 만드는 과정을 반복합니다.
 		// 이런 방식으로 루트 노드를 계속해서 빼내다 보면, 정렬이 완성되어 있게 됩니다.
-		for (int i = Length - 1; i >= 0; --i)
+		for (int i = BoxCount - 1; i >= 0; --i)
 		{
 			yield return Box.SwapCoroutine(Boxes[0], Boxes[i]);
 

@@ -14,7 +14,7 @@ public class InsertionSort : SortAlgorithmBase
 {
 	protected override IEnumerator SortCoroutine()
 	{
-		for (int i = 0; i < Length; ++i)
+		for (int i = 0; i < BoxCount; ++i)
 		{
 			int Key = Boxes[i].Length;
 

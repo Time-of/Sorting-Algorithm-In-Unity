@@ -13,12 +13,12 @@ public class SelectionSort : SortAlgorithmBase
 	protected override IEnumerator SortCoroutine()
 	{
 		// 마지막 인덱스는 j에 의해 검사됩니다.
-		for (int i = 0; i < Length - 1; ++i)
+		for (int i = 0; i < BoxCount - 1; ++i)
 		{
 			int MinIndex = i;
 
 			// i 바로 다음부터 오른쪽 끝까지 검사
-			for (int j = i + 1; j < Length; ++j)
+			for (int j = i + 1; j < BoxCount; ++j)
 			{
 				Boxes[j].ColorGreen();
 

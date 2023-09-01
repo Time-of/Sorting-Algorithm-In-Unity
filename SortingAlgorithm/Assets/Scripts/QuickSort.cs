@@ -85,6 +85,6 @@ public class QuickSort : SortAlgorithmBase
 
 	protected override IEnumerator SortCoroutine()
 	{
-		yield return ExecuteQuickSort(0, Length - 1);
+		yield return ExecuteQuickSort(0, BoxCount - 1);
 	}
 }

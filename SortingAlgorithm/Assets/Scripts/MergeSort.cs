@@ -93,6 +93,6 @@ public class MergeSort : SortAlgorithmBase
 
 	protected override IEnumerator SortCoroutine()
 	{
-		yield return Sort(0, Length - 1);
+		yield return Sort(0, BoxCount - 1);
 	}
 }

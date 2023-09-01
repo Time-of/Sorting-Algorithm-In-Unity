@@ -12,14 +12,14 @@ public class SortAlgorithmBase : MonoBehaviour
 
 	protected Box[] Boxes;
 
-	protected int Length;
+	protected int BoxCount;
 
 
 
 	private void Start()
 	{
 		Boxes = BoxManager.Instance.Boxes;
-		Length = BoxManager.Instance.BoxCount;
+		BoxCount = BoxManager.Instance.BoxCount;
 	}
 
 
