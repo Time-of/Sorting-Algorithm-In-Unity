@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 
 
@@ -43,6 +44,8 @@ public class BoxManager : MonoBehaviour
 	{
 		Instance = this;
 		MakeBoxes();
+
+		DOTween.Init(true, true);
 	}
 
 

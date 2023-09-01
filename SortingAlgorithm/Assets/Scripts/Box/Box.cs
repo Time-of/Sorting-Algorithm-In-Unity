@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -26,9 +27,18 @@ public class Box : MonoBehaviour
 
 
 
-	public static void Swap(Box A, Box B)
+	public static void Swap(Box A, Box B, bool bUseTweening = false)
 	{
-		(B.transform.position, A.transform.position) = (A.transform.position, B.transform.position);
+		if (bUseTweening)
+		{
+			Vector3 OldAPos = A.transform.position;
+			A.transform.DOMove(B.transform.position, 0.18f);
+			B.transform.DOMove(OldAPos, 0.18f);
+		}
+		else
+		{
+			(B.transform.position, A.transform.position) = (A.transform.position, B.transform.position);
+		}
 
 		BoxManager.Instance.ColorBoxRed(A);
 		BoxManager.Instance.ColorBoxRed(B);

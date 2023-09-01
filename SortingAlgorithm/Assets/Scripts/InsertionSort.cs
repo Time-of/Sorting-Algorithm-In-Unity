@@ -26,17 +26,17 @@ public class InsertionSort : SortAlgorithmBase
 			while (j >= 0 && Boxes[j].Length > Key)
 			{
 				// 원소를 오른쪽으로 밀어냅니다.
-				Box.Swap(Boxes[j + 1], Boxes[j]);
+				Box.Swap(Boxes[j + 1], Boxes[j], true);
 
 				--j;
 
-				yield return SortWaitTime;
+				yield return SwapWaitTime;
 
 				BoxManager.Instance.ColorBoxWhite(Boxes[j + 2]);
 				BoxManager.Instance.ColorBoxWhite(Boxes[j + 1]);
 			}
 
-			yield return SortWaitTime;
+			yield return RepeatWaitTime;
 			
 			BoxManager.Instance.ColorBoxWhite(Boxes[i]);
 		}

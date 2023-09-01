@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class SortAlgorithmBase : MonoBehaviour
 {
-	public static WaitForSeconds SortWaitTime = new(0.1f);
+	public static WaitForSeconds RepeatWaitTime = new(0.1f);
+
+	public static WaitForSeconds SwapWaitTime = new(0.2f);
 
 	protected Box[] Boxes;
 

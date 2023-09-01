@@ -30,19 +30,24 @@ public class SelectionSort : SortAlgorithmBase
 					BoxManager.Instance.ColorBoxBlue(Boxes[MinIndex]);
 				}
 
-				yield return SortWaitTime;
+				yield return RepeatWaitTime;
 
 				BoxManager.Instance.ColorBoxWhite(Boxes[j]);
 			}
 
 			// 최솟값을 앞에서부터 차례대로 세워나가며 정렬한다.
 			if (i != MinIndex)
-				Box.Swap(Boxes[i], Boxes[MinIndex]);
-
-			yield return SortWaitTime;
+			{
+				Box.Swap(Boxes[i], Boxes[MinIndex], true);
+				
+				yield return SwapWaitTime;
+			}
+			else
+			{
+				yield return RepeatWaitTime;
+			}
 
 			BoxManager.Instance.ColorBoxWhite(Boxes[i]);
-			BoxManager.Instance.ColorBoxWhite(Boxes[MinIndex]);
 		}
 	}
 }
