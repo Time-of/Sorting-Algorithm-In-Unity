@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6aed1251a2ce74fb317bb27805d236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortPrefab: {fileID: 5115360495274080051, guid: 2ed5dc0f76552124d99c9e21cf76af5f, type: 3}
+  SortPrefab: {fileID: 3870456049834063323, guid: 14a9008a504baf84b9f031cc6221e57a, type: 3}
 --- !u!4 &658663049
 Transform:
   m_ObjectHideFlags: 0
